@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>login.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+login.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">behave </span><span class="s0">import </span><span class="s1">*</span>
+<span class="s0">from </span><span class="s1">selenium </span><span class="s0">import </span><span class="s1">webdriver</span>
+<span class="s0">import </span><span class="s1">time</span>
+
+<span class="s1">use_step_matcher(</span><span class="s2">&quot;re&quot;</span><span class="s1">)</span>
+
+
+<span class="s1">@given(</span><span class="s2">&quot;I launch Chrome Browser&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">step_impl(context):</span>
+    <span class="s1">context.driver = webdriver.Chrome(executable_path=</span><span class="s2">&quot;/usr/local/bin/chromedriver&quot;</span><span class="s1">)</span>
+
+
+<span class="s1">@when(</span><span class="s2">&quot;I open Pointzi home Page&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">step_impl(context):</span>
+        <span class="s1">context.driver.get(</span><span class="s2">&quot;https://dashboard.pointzi.com/login&quot;</span><span class="s1">)</span>
+        <span class="s1">time.sleep(</span><span class="s3">5</span><span class="s1">)</span>
+
+
+<span class="s1">@step(</span><span class="s2">&quot;Click on Register button&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">step_impl(context):</span>
+    <span class="s1">context.driver.find_element_by_xpath(</span><span class="s2">&quot;//button[normalize-space()='Register']&quot;</span><span class="s1">).click()</span>
+    <span class="s1">time.sleep(</span><span class="s3">3</span><span class="s1">)</span>
+    <span class="s1">context.driver.find_element_by_xpath(</span><span class="s2">&quot;//input[@type='email']&quot;</span><span class="s1">).send_keys(</span><span class="s2">'mansoor@yahoo.com'</span><span class="s1">)</span>
+    <span class="s1">time.sleep(</span><span class="s3">1</span><span class="s1">)</span>
+    <span class="s1">context.driver.find_element_by_xpath(</span><span class="s2">&quot;//input[@name='password']&quot;</span><span class="s1">).send_keys(</span><span class="s2">'maz78954'</span><span class="s1">)</span>
+    <span class="s1">time.sleep(</span><span class="s3">1</span><span class="s1">)</span>
+    <span class="s1">context.driver.find_element_by_xpath(</span><span class="s2">&quot;//input[@name='confirmPassword']&quot;</span><span class="s1">).send_keys(</span><span class="s2">'maz78954'</span><span class="s1">)</span>
+    <span class="s1">time.sleep(</span><span class="s3">5</span><span class="s1">)</span>
+    <span class="s1">context.driver.find_element_by_xpath(</span><span class="s2">&quot;//button[normalize-space()='Next']&quot;</span><span class="s1">).click()</span>
+    <span class="s1">time.sleep(</span><span class="s3">1</span><span class="s1">)</span>
+
+
+
+
+<span class="s1">@then(</span><span class="s2">&quot;select from dropdwons&quot;</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">step_impl(context):</span>
+    <span class="s4"># driver = webdriver.Chrome()</span>
+    <span class="s4"># context.driver = webdriver.Chrome(executable_path=&quot;/usr/local/bin/chromedriver&quot;)</span>
+
+    <span class="s1">ey = context.driver.find_element_by_name(</span><span class="s2">&quot;role&quot;</span><span class="s1">)</span>
+    <span class="s1">ey.send_keys(</span><span class="s2">&quot;Developer&quot;</span><span class="s1">)</span>
+    <span class="s1">time.sleep(</span><span class="s3">2</span><span class="s1">)</span>
+    <span class="s1">ez = context.driver.find_element_by_name(</span><span class="s2">&quot;number_users&quot;</span><span class="s1">)</span>
+    <span class="s1">ez.send_keys(</span><span class="s2">&quot;0 - 50,000&quot;</span><span class="s1">)</span>
+    <span class="s1">exit(</span><span class="s3">0</span><span class="s1">)</span>
+    <span class="s4"># time.sleep(10)</span>
+    <span class="s4"># yx = context.driver.find_element_by_xpath(&quot;//button[@ng-click='$ctrl.nextStage()']&quot;)</span>
+    <span class="s4"># # yx.click()</span>
+    <span class="s4"># time.sleep(5)</span>
+
+
+
+
+<span class="s4">#</span>
+<span class="s4">#</span>
+<span class="s4"># @then(&quot;enter  final details&quot;)</span>
+<span class="s4"># def step_impl(context):</span>
+<span class="s4">#     &quot;&quot;&quot;</span>
+<span class="s4">#     :type context: behave.runner.Context</span>
+<span class="s4">#     &quot;&quot;&quot;</span>
+<span class="s4">#     raise NotImplementedError(u'STEP: Then enter  final details')</span>
+<span class="s4">#</span>
+<span class="s4">#</span>
+<span class="s4"># @then(&quot;Signup&quot;)</span>
+<span class="s4"># def step_impl(context):</span>
+<span class="s4">#     &quot;&quot;&quot;</span>
+<span class="s4">#     :type context: behave.runner.Context</span>
+<span class="s4">#     &quot;&quot;&quot;</span>
+<span class="s4">#     raise NotImplementedError(u'STEP: Then Signup')</span></pre>
+</body>
+</html>
